@@ -58,12 +58,12 @@ app.get('/api/user/:name', (req, res) => {
 
 app.get('/api/profile/:name/:age', (req, res) => {
     const userName = req.params.name;
-    const userAge = req.params.age;
+    const userAge = parseInt(req.params.age);
 
     res.json({
         "profile": {
-            "name": 'John',
-            "age": 25,
+            "name": userName,
+            "age": userAge,
             "isAdult": userAge >= 18
         },
         "message": 'Profile added successfully'
