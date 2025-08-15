@@ -1,0 +1,15 @@
+{
+  "name": "day-05",
+  "version": "1.0.0",
+  "description": "building restful api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --watch"
+  },
+  "author": "charukirti",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
