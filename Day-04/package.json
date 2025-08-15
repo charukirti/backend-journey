@@ -1,0 +1,14 @@
+{
+  "name": "day-04",
+  "version": "1.0.0",
+  "description": "learning about middlewares in express js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "charukirti",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
