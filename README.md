@@ -11,3 +11,7 @@
 ### Day-04 (August 11): Express JS => what is middleware and simple middleware example.
 
 ### Day-05 (August 15): Express JS => What is REST api, how create our own REST api (few things remaining).
+
+### Day-06 (August 20 - 22): Express JS => HTTP methods.
+
+
