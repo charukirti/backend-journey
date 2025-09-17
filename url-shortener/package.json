@@ -1,0 +1,20 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "url shortener",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --env-file=.env server.js"
+  },
+  "author": "charukirti",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1",
+    "nanoid": "^5.1.5"
+  }
+}
