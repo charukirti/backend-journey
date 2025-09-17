@@ -14,4 +14,8 @@
 
 ### Day-06 (August 20 - 22): Express JS => HTTP methods.
 
+### Day-7 (September 15): MongoDB and mongoose integration and crud 
 
+### Day-8 (september 16): Error handling
+
+### Day-9 (September 17): MVC architecture
