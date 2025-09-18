@@ -1,0 +1,19 @@
+{
+  "name": "day-10",
+  "version": "1.0.0",
+  "description": "learning about serverside rendering",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env server.js"
+  },
+  "type": "module",
+  "author": "charukirti",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
