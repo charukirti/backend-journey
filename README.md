@@ -22,4 +22,4 @@
 
 ## Project 1 :- URL shortener
 
-### Day-11 (September)
+### Day-11 (September 19 & 21): EJS and serverside rendering
