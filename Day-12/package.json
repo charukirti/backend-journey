@@ -1,0 +1,16 @@
+{
+  "name": "day-12",
+  "version": "1.0.0",
+  "description": "learning about authentication",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env index.js"
+  },
+  "type": "module",
+  "author": "charukirti",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1"
+  }
+}
