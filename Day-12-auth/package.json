@@ -1,5 +1,5 @@
 {
-  "name": "day-12",
+  "name": "day-12-auth",
   "version": "1.0.0",
   "description": "learning about authentication",
   "main": "index.js",
@@ -10,6 +10,8 @@
   "author": "charukirti",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongoose": "^8.18.1"
   }
