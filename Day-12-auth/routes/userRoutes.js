@@ -1,28 +1,29 @@
-import express from 'express'
+import express from 'express';
 import { getUser, getUsers, health, showSignIn, showSignUp, signIn, signUp } from '../controllers/userController.js';
+import { authenticateToken } from '../middlewares/authMiddleware.js';
 
-const router = express.Router()
+const router = express.Router();
 
 // health check
 
-router.get('/', health)
+router.get('/', health);
 
 // sign in form
-router.get('/signin', showSignIn) 
+router.get('/signin', showSignIn);
 
 // sign up form
-router.get('/signup', showSignUp) 
+router.get('/signup', showSignUp);
 
 // sign in route
-router.post('/signin', signIn) 
+router.post('/signin', signIn);
 
 // sign up route
-router.post('/signup', signUp) 
+router.post('/signup', signUp);
 
 // get all users route
-router.get('/users', getUsers) 
+router.get('/users', getUsers);
 
 // get user route
-router.get('/user', getUser) 
+router.get('/user', authenticateToken, getUser);
 
-export default router
+export default router;
