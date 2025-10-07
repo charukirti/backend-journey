@@ -71,7 +71,14 @@ export async function updateTask(req, res, next) {
     try {
         const id = req.params.id;
 
-        const updatedTask = await TaskModel.findByIdAndUpdate(id, req.body, { new: true });
+        const updatedTask = await TaskModel.findByIdAndUpdate( id, req.body, { new: true });
+
+        if(!updatedTask) {
+            res.status(404).json({
+                success: false,
+                message: 'task not found'
+            })
+        }
 
         return res.json({
             success: true,
@@ -82,4 +89,22 @@ export async function updateTask(req, res, next) {
         console.log('Task update error', error);
         throw new Error('Unable to update task');
     }
-} 
+}
+
+
+export async function deleteTask(req, res, next) {
+    try {
+        const id = req.params.id;
+
+        const deletedTask = await TaskModel.findByIdAndDelete(id);
+
+        return res.json({
+            success: true,
+            message: "deleted task successfully",
+            data: deletedTask
+        });
+    } catch (error) {
+        console.log('Task delete error', error);
+        throw new Error('Unable to delete task');
+    }
+}

@@ -1,5 +1,5 @@
 import express from 'express';
-import { createTask, getAllTasks, getTaskById, updateTask } from '../controllers/taskController.js';
+import { createTask, deleteTask, getAllTasks, getTaskById, updateTask } from '../controllers/taskController.js';
 
 const route = express.Router();
 
@@ -13,9 +13,12 @@ route.post('/', createTask);
 route.get('/', getAllTasks);
 
 // Get Task by id
-route.get('/:id', getTaskById)
+route.get('/:id', getTaskById);
 
 // Update task by id
-route.patch('/:id', updateTask)
+route.patch('/:id', updateTask);
+
+// delete task by id
+route.delete('/:id', deleteTask);
 
 export default route;
