@@ -1,12 +1,21 @@
-import express from 'express'
-import { createTask } from '../controllers/taskController.js';
+import express from 'express';
+import { createTask, getAllTasks, getTaskById, updateTask } from '../controllers/taskController.js';
 
-const route = express.Router()
+const route = express.Router();
 
 // TODO: Create Routes
 
 // create task
 
-route.post('/', createTask)
+route.post('/', createTask);
 
-export default route
+// Get all task
+route.get('/', getAllTasks);
+
+// Get Task by id
+route.get('/:id', getTaskById)
+
+// Update task by id
+route.patch('/:id', updateTask)
+
+export default route;
