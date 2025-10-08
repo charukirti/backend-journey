@@ -14,6 +14,12 @@ export async function createTask(req, res, next) {
             priority: taskData.priority
         };
 
+        if (!newTask) {
+            const error = new Error('Unable to create task');
+            error.status = 400;
+            throw error;
+        }
+
         await TaskModel.create(newTask);
 
         return res.status(201).json({
@@ -23,7 +29,7 @@ export async function createTask(req, res, next) {
         });
     } catch (error) {
         console.log('Task create error', error);
-        throw new Error("Unable to create new task");
+        next(error);
     }
 }
 
@@ -31,18 +37,21 @@ export async function createTask(req, res, next) {
 export async function getAllTasks(req, res, next) {
     try {
         const tasks = await TaskModel.find({});
+
         if (!tasks) {
-            throw new Error('There are no tasks');
+            const error = new Error('Tasks not found');
+            error.status = 404;
+            throw error;
         }
 
-        return res.json({
+        return res.status(200).json({
             success: true,
             message: 'All tasks retrived successfully',
             data: tasks
         });
     } catch (error) {
         console.error('get all task error', error);
-        throw new Error('Unable to get all tasks');
+        next(error);
     }
 }
 
@@ -51,11 +60,14 @@ export async function getTaskById(req, res, next) {
     try {
         const id = req.params.id;
         const task = await TaskModel.findById(id);
+
         if (!task) {
-            throw new Error('Task does not exist');
+            const error = new Error('Task not found');
+            error.statusCode = 404;
+            throw error;
         }
 
-        return res.json({
+        return res.status(200).json({
             success: true,
             message: 'Task retrived successfully',
             data: task
@@ -63,7 +75,7 @@ export async function getTaskById(req, res, next) {
 
     } catch (error) {
         console.error("get task by id error", error);
-        throw new Error('Unable to get task');
+        next(error);
     }
 }
 
@@ -71,23 +83,22 @@ export async function updateTask(req, res, next) {
     try {
         const id = req.params.id;
 
-        const updatedTask = await TaskModel.findByIdAndUpdate( id, req.body, { new: true });
+        const updatedTask = await TaskModel.findByIdAndUpdate(id, req.body, { new: true });
 
-        if(!updatedTask) {
-            res.status(404).json({
-                success: false,
-                message: 'task not found'
-            })
+        if (!updatedTask) {
+            const error = new Error('Unable to update task');
+            error.status = 404;
+            throw error;
         }
 
-        return res.json({
+        return res.status(200).json({
             success: true,
             message: "Task updated successfully",
             data: updatedTask
         });
     } catch (error) {
         console.log('Task update error', error);
-        throw new Error('Unable to update task');
+        next(error);
     }
 }
 
@@ -98,13 +109,19 @@ export async function deleteTask(req, res, next) {
 
         const deletedTask = await TaskModel.findByIdAndDelete(id);
 
-        return res.json({
+        if (!deletedTask) {
+            const error = new Error('Unable to delete — task not found');
+            error.statusCode = 404;
+            throw error;
+        }
+
+        return res.status(200).json({
             success: true,
             message: "deleted task successfully",
             data: deletedTask
         });
     } catch (error) {
         console.log('Task delete error', error);
-        throw new Error('Unable to delete task');
+        next(error);
     }
 }

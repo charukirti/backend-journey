@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDB from './config/dbconfig.js';
 import route from './routes/taskRoutes.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.get('/', (req, res, next) => {
 
 app.use('/api/task', route)
 
+
+app.use(errorHandler)
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
