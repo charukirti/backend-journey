@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="">
+        <h1>Hello, welcome to the TaskManager UI</h1>
+
+        <form action="/api/task" method="post" class="container">
+
+            <div class="form-group">
+                <label for="title">Task Title*</label>
+                <input type="text" placeholder="enter your task title" id="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Task status*</label>
+
+                <select name="status" id="status">
+                    <option value="in-progress">In-progress</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Task priority*</label>
+
+                <select name="priority" id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Task description</label>
+
+                <textarea id="description" name="description"> </textarea>
+            </div>
+
+
+
+            <div class="btn-group">
+                <button type="submit" class="submit-btn">Submit</button>
+                <button type="reset" class="reset-btn">Reset</button>
+            </div>
+        </form>
+    </div>
+    <div class="tasks">
+        <h2>Your tasks</h2>
+
+        <div class="task"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
