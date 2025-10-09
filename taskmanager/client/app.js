@@ -107,7 +107,48 @@ async function createNewTask() {
 
 }
 
+// toggle status
 
+async function toggleTaskStatus(id, newStatus) {
+    try {
+        const response = await fetch(`${api_url}/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: newStatus })
+        });
+
+        if (!response.ok) throw new Error('Failed to update task');
+
+        const updatedTask = await response.json();
+        const index = allTasks.findIndex(t => (t._id || t.id) === id);
+        if (index !== -1) {
+            allTasks[index] = updatedTask.data;
+        }
+        renderTasks();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+// delete task
+
+async function deleteTask(id) {
+    try {
+        const response = await fetch(`${api_url}/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete task');
+        }
+
+        allTasks = allTasks.filter(task => (task._id || task.id) !== id);
+        renderTasks();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 taskForm.addEventListener('submit', (e) => {
