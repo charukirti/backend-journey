@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors'
 import connectDB from './config/dbconfig.js';
 import route from './routes/taskRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -9,6 +10,9 @@ const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.static('public'))
+app.use(cors({
+    origin: 'http://127.0.0.1:5500'
+}))
 
 connectDB()
 
