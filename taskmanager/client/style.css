@@ -115,6 +115,28 @@ header h1 {
   font-size: 14px;
 }
 
+.search-section {
+ background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-section input {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
 .filter-section {
   background: white;
   padding: 20px;
@@ -123,6 +145,7 @@ header h1 {
   margin-bottom: 30px;
   display: flex;
   gap: 15px;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
 }

@@ -4,12 +4,16 @@ const errorContainer = document.querySelector('#errorContainer');
 
 const taskForm = document.querySelector('#taskForm');
 
+const statusFilter = document.querySelector('.status');
+const priorityFilter = document.querySelector('.priority');
+
 let allTasks = [];
 const api_url = 'http://localhost:3000/api/task';
 
-async function loadTasks() {
+async function loadTasks(status = '', priority = '') {
     try {
-        const response = await fetch(api_url);
+        const url = `${api_url}?status=${status}&priority=${priority}`;
+        const response = await fetch(url);
 
         if (!response.ok) throw new Error('Unable to fetch tasks');
         const data = await response.json();
@@ -155,6 +159,22 @@ taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     createNewTask();
 });
+
+
+// apply status
+
+function applyFilters() {
+    const status = statusFilter.value;
+    const priority = priorityFilter.value;
+
+    loadTasks(status, priority);
+}
+
+
+// status filters
+
+statusFilter.addEventListener('change', applyFilters);
+priorityFilter.addEventListener('change', applyFilters);
 
 
 function escapeHtml(text) {

@@ -15,7 +15,6 @@
             <p>Organize your tasks efficiently</p>
         </header>
 
-        <div id="errorContainer"></div>
 
         <!-- Add Task Form -->
         <div class="add-task-section">
@@ -42,6 +41,35 @@
 
                 <button type="submit" class="btn btn-primary">Add Task</button>
             </form>
+        </div>
+
+
+        <div class="search-section">
+            <input name="seach" placeholder="search your tasks" class="search" id="search" />
+            <button class="btn btn-primary" id="search-btn">Search</button>
+        </div>
+
+        <!-- filters -->
+
+        <div class="filter-section">
+            <label for="">Filter by status:
+                <select name="status" id="status" class="status">
+                    <option value="">All</option>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In-Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </label>
+
+            <label for="">Filter by priority:
+                <select name="priority" id="priority" class="priority">
+                    <option value="">All</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </label>
+
         </div>
 
 
