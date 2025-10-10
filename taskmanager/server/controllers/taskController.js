@@ -20,12 +20,12 @@ export async function createTask(req, res, next) {
             throw error;
         }
 
-        await TaskModel.create(newTask);
+       const createdTask = await TaskModel.create(newTask);
 
         return res.status(201).json({
             success: true,
             message: "New task created successfully",
-            data: newTask
+            data: createdTask
         });
     } catch (error) {
         console.log('Task create error', error);
