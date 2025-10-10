@@ -20,7 +20,7 @@ export async function createTask(req, res, next) {
             throw error;
         }
 
-       const createdTask = await TaskModel.create(newTask);
+        const createdTask = await TaskModel.create(newTask);
 
         return res.status(201).json({
             success: true,
@@ -35,8 +35,19 @@ export async function createTask(req, res, next) {
 
 
 export async function getAllTasks(req, res, next) {
+   
     try {
-        const tasks = await TaskModel.find({});
+        let filter = {};
+
+        if (req.query.status) {
+            filter.status = req.query.status;
+        }
+
+        if (req.query.priority) {
+            filter.priority = req.query.priority;
+        }
+
+        const tasks = await TaskModel.find(filter);
 
         if (!tasks) {
             const error = new Error('Tasks not found');
